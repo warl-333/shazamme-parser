@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+sqlalchemy[asyncio]
+asyncpg
+python-docx
+PyMuPDF
+spacy
+aiofiles
+css
+CopyEdit
