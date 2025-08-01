@@ -12,3 +12,4 @@ class ParsedCV(Base):
     phone = Column(String)
     skills = Column(Text)
     text_preview = Column(Text)
+    #comment
