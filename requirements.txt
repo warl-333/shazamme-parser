@@ -9,3 +9,4 @@ aiofiles
 css
 CopyEdit
 aiosqlite
+python-multipart
