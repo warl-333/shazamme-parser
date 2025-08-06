@@ -38,6 +38,13 @@ from docx import Document
 
 # NLP
 import spacy
+from spacy.cli import download
+
+try:
+    nlp = spacy.load("en_core_web_trf")
+except OSError:
+    download("en_core_web_trf")
+    nlp = spacy.load("en_core_web_trf")
 from spacy.matcher import PhraseMatcher
 
 # OpenAI GPT
