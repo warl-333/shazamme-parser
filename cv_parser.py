@@ -42,7 +42,7 @@ from spacy.matcher import PhraseMatcher
 
 # OpenAI GPT
 import openai
-openai.api_key = os.getenv("OPENAI_API_KEY", "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")
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 # Load NLP model
 nlp = spacy.load("en_core_web_trf")
 
