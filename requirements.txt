@@ -12,4 +12,5 @@ aiosqlite
 python-multipart
 spacy[transformers]
 docx
+pandas
 openai
