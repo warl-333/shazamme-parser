@@ -1,0 +1,26 @@
+# Exclude virtual environment
+venv/
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Large files
+*.csv
+*.pdf
+*.pkl
+*.pt
+*.bin
+*.npy
+*.npz
+*.sqlite3
+*.log
+
+# Dev/test files
+tests/
+*.md
+
+# System files
+.DS_Store
+Thumbs.db
