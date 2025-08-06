@@ -38,13 +38,17 @@ from docx import Document
 
 # NLP
 import spacy
-from spacy.cli import download
+_nlp = None
 
-try:
-    nlp = spacy.load("en_core_web_trf")
-except OSError:
-    download("en_core_web_trf")
-    nlp = spacy.load("en_core_web_trf")
+def get_nlp():
+    global _nlp
+    if _nlp is None:
+        try:
+            _nlp = spacy.load("en_core_web_trf")
+        except OSError:
+            raise RuntimeError("en_core_web_trf model not found. Make sure it is installed.")
+    return _nlp
+nlp = get_nlp()
 from spacy.matcher import PhraseMatcher
 
 # OpenAI GPT
