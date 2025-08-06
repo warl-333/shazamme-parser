@@ -1,2 +1,16 @@
 fastapi
-uvicorn
+uvicorn[standard]
+sqlalchemy[asyncio]
+asyncpg
+python-docx
+PyMuPDF
+spacy
+aiofiles
+css
+CopyEdit
+aiosqlite
+python-multipart
+spacy[transformers]
+docx
+pandas
+openai
