@@ -10,3 +10,7 @@ css
 CopyEdit
 aiosqlite
 python-multipart
+spacy[transformers]
+fitz
+docx
+openai

@@ -1,0 +1,22 @@
+venv/
+__pycache__/
+*.pyc
+
+# Large models or data
+*.pt
+*.pkl
+*.bin
+*.csv
+*.pdf
+*.docx
+
+# Heroku build and temp
+*.slug
+*.log
+.DS_Store
+/tmp/
+
+*.egg-info/
+.env
+.idea/
+*.sqlite3

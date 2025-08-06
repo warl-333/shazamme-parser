@@ -1,0 +1,361 @@
+Python
+JavaScript
+SQL
+Machine Learning
+Docker
+AWS
+FastAPI
+React
+Node.js
+C++
+TensorFlow
+PyTorch
+Java
+C#
+Ruby
+Go
+Swift
+Kotlin
+PHP
+NoSQL
+HTML
+CSS
+TypeScript
+Bash
+Shell
+Angular
+Vue.js
+Django
+Flask
+Spring
+Ruby on Rails
+ASP.NET
+Express.js
+Keras
+Scikit-learn
+Pandas
+NumPy
+Matplotlib
+Seaborn
+Azure
+Google Cloud
+Kubernetes
+Terraform
+Ansible
+Jenkins
+Git
+GitHub
+GitLab
+Bitbucket
+Linux
+Windows
+macOS
+Unix
+REST
+GraphQL
+SOAP
+gRPC
+Microservices
+Monolith
+Agile
+Scrum
+Kanban
+JIRA
+Confluence
+CI/CD
+TDD
+BDD
+Unit Testing
+Integration Testing
+Deep Learning
+NLP
+Computer Vision
+Data Science
+Big Data
+Hadoop
+Spark
+SQL Server
+MySQL
+PostgreSQL
+MongoDB
+Cassandra
+Redis
+Elasticsearch
+RabbitMQ
+Kafka
+Excel
+Power BI
+Tableau
+Communication
+Teamwork
+Leadership
+Problem Solving
+Time Management
+Critical Thinking
+Project Management
+Business Analysis
+Photoshop
+Illustrator
+Figma
+Sketch
+Unity
+Unreal Engine
+Salesforce
+SAP
+Oracle
+Blockchain
+Cryptocurrency
+Ethereum
+Smart Contracts
+Cybersecurity
+Penetration Testing
+Network Security
+DevOps
+Site Reliability Engineering
+Cloud Computing
+Virtualization
+Mobile Development
+Android
+iOS
+REST API
+API Development
+OAuth
+JWT
+SEO
+SEM
+Content Marketing
+Copywriting
+Editing
+Public Speaking
+Spanish
+French
+German
+Mandarin
+Ethical Hacking
+Data Analysis
+Data Visualization
+Automation
+Scripting
+Robotics
+Embedded Systems
+Internet of Things
+IoT
+Quality Assurance
+QA Testing
+Software Development
+Software Architecture
+Cloud Native
+Serverless
+Data Engineering
+ETL
+CRM
+ERP
+Google Analytics
+AdWords
+Machine Vision
+Augmented Reality
+Virtual Reality
+SaaS
+PaaS
+IaaS
+Docker Compose
+Helm
+Load Balancing
+Caching
+Graph Databases
+Neo4j
+Message Queues
+Celery
+JSON
+XML
+YAML
+WebSockets
+SignalR
+Accessibility
+UX/UI Design
+Continuous Integration
+Continuous Deployment
+OAuth2
+OpenID Connect
+ORM
+Hibernate
+SQLAlchemy
+Bootstrap
+Material UI
+Webpack
+Parcel
+Jest
+Mocha
+Chai
+RESTful Services
+Data Mining
+Predictive Analytics
+Scrum Master
+Product Owner
+Business Intelligence
+Load Testing
+Stress Testing
+Image Processing
+Video Processing
+Firebase
+Firestore
+Apache Kafka
+Apache Flink
+Elastic Stack
+Logstash
+Kibana
+Linux Administration
+Windows Server
+VMware
+Hyper-V
+PowerShell
+Perl
+Scala
+Haskell
+Lua
+MATLAB
+SAS
+SPSS
+Tableau Prep
+Looker
+QlikView
+Snowflake
+Databricks
+Google BigQuery
+Microsoft Power Platform
+PowerApps
+Logic Apps
+Azure DevOps
+CircleCI
+Travis CI
+Bitrise
+CloudFormation
+SaltStack
+Chef
+Puppet
+Nagios
+Zabbix
+New Relic
+Datadog
+Prometheus
+Grafana
+Splunk
+ELK Stack
+Wireshark
+Nmap
+Metasploit
+Burp Suite
+Kali Linux
+OpenVAS
+Qualys
+Tenable Nessus
+Cisco Networking
+Juniper Networks
+MPLS
+BGP
+OSPF
+VPN
+Firewalls
+Load Balancers
+CDN
+API Gateway
+OAuth 2.0
+OpenID Connect
+JSON Web Tokens
+SAML
+LDAP
+Active Directory
+OAuth Providers
+SSO
+Identity Management
+Data Governance
+Data Quality
+Master Data Management
+ETL Pipelines
+Data Lakes
+Data Warehousing
+Business Intelligence Tools
+Predictive Modeling
+Statistical Analysis
+R
+Jupyter Notebooks
+Google Colab
+Data Wrangling
+Feature Engineering
+Model Deployment
+A/B Testing
+Experimentation
+Google Tag Manager
+HubSpot
+Marketo
+Mailchimp
+Zendesk
+Freshdesk
+Salesforce Marketing Cloud
+Customer Experience Management
+Chatbots
+Conversational AI
+Voice Assistants
+Natural Language Generation
+Reinforcement Learning
+Transfer Learning
+GANs
+AutoML
+Explainable AI
+AI Ethics
+Computer Graphics
+3D Modeling
+CAD
+SolidWorks
+Electrical Engineering
+Mechanical Engineering
+Civil Engineering
+Quality Control
+Six Sigma
+Lean Manufacturing
+Supply Chain Management
+Inventory Management
+SAP ERP
+Oracle ERP
+JD Edwards
+PeopleSoft
+Workday
+Business Process Modeling
+TOGAF
+ITIL
+COBIT
+Prince2
+PMP
+Certified Scrum Master
+Lean Startup
+Design Thinking
+User Research
+Wireframing
+Prototyping
+Information Architecture
+Content Strategy
+Technical Writing
+Editing and Proofreading
+Translation
+Language Teaching
+Cross-cultural Communication
+Negotiation
+Conflict Resolution
+Emotional Intelligence
+Mindfulness
+Coaching
+Mentoring
+Team Building
+Change Management
+Organizational Development
+Performance Management
+Compensation and Benefits
+Recruitment
+Onboarding
+Training and Development
+Workforce Planning
+Labor Law
+Payroll
+Time Tracking
+Employee Relations
+Wo

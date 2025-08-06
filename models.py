@@ -12,4 +12,7 @@ class ParsedCV(Base):
     phone = Column(String)
     skills = Column(Text)
     text_preview = Column(Text)
+    location = Column(String)     # candidate location
+    degrees = Column(Text)        # semicolon-separated degrees
+    universities = Column(Text)   # semicolon-separated universities
     #comment
