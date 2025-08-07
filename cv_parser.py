@@ -36,8 +36,9 @@ KNOWN_SKILLS = load_skills_column("skills-dataset.csv")
 
 from docx import Document
 
-# NLP
-import spacy
+#import spacy
+from spacy.matcher import PhraseMatcher
+
 _nlp = None
 
 def get_nlp():
@@ -48,14 +49,12 @@ def get_nlp():
         except OSError:
             raise RuntimeError("en_core_web_trf model not found. Make sure it is installed.")
     return _nlp
-nlp = get_nlp()
-from spacy.matcher import PhraseMatcher
 
+nlp = get_nlp()
 # OpenAI GPT
 import openai
 openai.api_key = os.environ.get("OPENAI_API_KEY")
-# Load NLP model
-nlp = spacy.load("en_core_web_trf")
+
 
 # Predefined keyword lists
 degree_keywords = [
