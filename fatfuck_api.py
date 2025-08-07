@@ -40,19 +40,25 @@ async def parse_pdf(file: UploadFile = File(...)):
 
         # Send to OpenAI GPT
         response = openai.chat.completions.create(
-                model="gpt-4.1-2025-04-14",  # Replace with your available model
-                messages=[{
-                    "role": "user",
-                    "content": (
-                        f"Summarise the following CV text. Extract and list: "
-                        f"name, email, phone, degrees, skills, location, universities.\n\n{text}"
-                    )}]
+            model="gpt-4.1-2025-04-14",
+            messages=[{
+                "role": "user",
+                "content": (
+                    f"Summarise the following CV text. Extract and list: "
+                    f"name, email, phone, degrees, skills, location, universities.\n\n{text}"
+                )
+            }],
+            temperature=0.3,
         )
-
-        return {"result": response["choices"][0]["message"]["content"]}
-    
+        gpt_summary = response.choices[0].message.content.strip()
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        gpt_summary = f"GPT summarization failed: {str(e)}"
+
+    return {
+       
+      
+        "gpt_summary": gpt_summary,
+    }
 
 if __name__ == "__main__":
     import uvicorn
