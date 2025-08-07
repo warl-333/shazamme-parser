@@ -39,12 +39,14 @@ async def parse_pdf(file: UploadFile = File(...)):
             raise HTTPException(status_code=400, detail="No text found in PDF.")
 
         # Send to OpenAI GPT
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": "You are a CV analysis assistant."},
-                {"role": "user", "content": f"Here is a resume:\n\n{text}\n\nExtract structured information (name, skills, experience, education)."}
-            ]
+        response = openai.chat.completions.create(
+                model="gpt-4.1-2025-04-14",  # Replace with your available model
+                messages=[{
+                    "role": "user",
+                    "content": (
+                        f"Summarise the following CV text. Extract and list: "
+                        f"name, email, phone, degrees, skills, location, universities.\n\n{full_text}"
+                    )}]
         )
 
         return {"result": response["choices"][0]["message"]["content"]}
