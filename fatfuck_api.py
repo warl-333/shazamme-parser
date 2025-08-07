@@ -45,7 +45,7 @@ async def parse_pdf(file: UploadFile = File(...)):
                     "role": "user",
                     "content": (
                         f"Summarise the following CV text. Extract and list: "
-                        f"name, email, phone, degrees, skills, location, universities.\n\n{full_text}"
+                        f"name, email, phone, degrees, skills, location, universities.\n\n{text}"
                     )}]
         )
 
