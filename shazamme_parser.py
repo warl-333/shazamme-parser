@@ -64,21 +64,25 @@ async def parse_cv(file: UploadFile = File(...)):
                 temperature=0.3,
             )
             gpt_summary = response.choices[0].message.content.strip()
+            
 
-            # Try to minify the JSON string to remove newlines and extra spaces
-            try:
-                parsed = json.loads(gpt_summary)
-                gpt_summary = json.dumps(parsed, separators=(',', ':'))
-            except Exception:
-                # If parsing fails, keep the original output as is
-                pass
+            # If GPT returns the JSON wrapped in markdown, remove it:
+            if gpt_summary.startswith("```json"):
+                gpt_summary = gpt_summary[len("```json"):].strip()
+            if gpt_summary.endswith("```"):
+                gpt_summary = gpt_summary[:-3].strip()
 
-        except Exception as e:
-            gpt_summary = f"GPT summarization failed: {str(e)}"
+            # Now parse the JSON string into a Python dict
+            import json
+            parsed_json = json.loads(gpt_summary)
 
-        return {
-            "gpt_summary": gpt_summary
-        }
+        except Exception as e: # Dump it compactly (no newlines or spaces)
+            gpt_summary_compact = json.dumps(parsed_json, separators=(',', ':'))
+
+            return {
+                "gpt_summary": gpt_summary_compact
+            }
+
     except Exception as e:
         # This outer except can catch any other errors
         raise HTTPException(status_code=500, detail=str(e))
