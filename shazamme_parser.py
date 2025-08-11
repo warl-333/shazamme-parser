@@ -6,6 +6,7 @@ import openai
 import fitz  # PyMuPDF
 import docx  # python-docx
 from io import BytesIO
+import json
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -47,10 +48,7 @@ async def parse_cv(file: UploadFile = File(...)):
         else:
             raise HTTPException(status_code=400, detail="Unsupported file type. Upload a .pdf or .docx file.")
 
-    # GPT Summary
-        import json
-
-# GPT Summary
+        # GPT Summary
         try:
             response = openai.chat.completions.create(
                 model="gpt-4.1-2025-04-14",  # or your chosen model
@@ -64,28 +62,32 @@ async def parse_cv(file: UploadFile = File(...)):
                 temperature=0.3,
             )
             gpt_summary = response.choices[0].message.content.strip()
-            
 
-            # If GPT returns the JSON wrapped in markdown, remove it:
+            # Remove markdown code block if present
             if gpt_summary.startswith("```json"):
                 gpt_summary = gpt_summary[len("```json"):].strip()
             if gpt_summary.endswith("```"):
                 gpt_summary = gpt_summary[:-3].strip()
 
-            # Now parse the JSON string into a Python dict
-            import json
+            # Parse JSON string into Python dict
             parsed_json = json.loads(gpt_summary)
 
-        except Exception as e: # Dump it compactly (no newlines or spaces)
+            # Compact JSON string (no newlines or spaces)
             gpt_summary_compact = json.dumps(parsed_json, separators=(',', ':'))
 
             return {
                 "gpt_summary": gpt_summary_compact
             }
 
+        except Exception as e:
+            # GPT summarization or JSON parsing failed
+            raise HTTPException(status_code=500, detail=f"GPT summarization failed: {str(e)}")
+
     except Exception as e:
-        # This outer except can catch any other errors
+        # Catch all other errors (file read, extraction, etc.)
         raise HTTPException(status_code=500, detail=str(e))
+
+
 # Optional manual runner for local testing
 if __name__ == "__main__":
     import uvicorn
