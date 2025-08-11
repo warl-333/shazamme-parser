@@ -53,9 +53,103 @@ async def parse_cv(file: UploadFile = File(...)):
                 model="gpt-4.1-2025-04-14",  # or your chosen model
                 messages=[{
                     "role": "user",
-                    "content": (
-                        f"Extract and summarise the following structured information from the provided CV text. Please return the results in **clean, structured, JSON-style format** with the following top-level fields: "
-                        f"1. **contact_info**: - full_name - email_addresses (list) - phone_numbers (list) - address: - street - city - state_or_province - postal_code - country - links (LinkedIn, portfolio, GitHub, etc.) 2. **professional_summary**: (Short about me or objective paragraph) 3. **work_experience**: (List of past jobs, each with the following) - job_title - company - location (city, country) - start_date (ISO format: YYYY-MM-DD or partial if unavailable) - end_date (or present) - responsibilities (bullet points) - achievements (metrics, awards, key results) 4. **education**: (List of degrees/certifications) - degree - institution - location (city, country) - start_date - end_date - honors_or_gpa 5. **skills**: - programming_languages - frameworks - tools - spoken_languages - other_skills 6. **certifications**: - name - issuer - issue_date - expiry_date (if any) 7. **languages**: - name - proficiency_level (e.g. native, fluent, professional) 8. **awards_and_memberships**: - name - issuer - date 9. **publications_and_patents**: - title - venue_or_office - date 10. **projects**: - title - description - technologies_used - dates Use null for any fields not found. Do not hallucinate or assume information. Prioritize accuracy and structured output. \n\n{full_text}"
+                    "content": ("""
+You are an AI CV parser. Extract the following fields from the CV text below
+and return them as a **single valid JSON object**. Do not include any text
+outside the JSON. For missing fields, use an empty string ("") or empty list ([]).
+
+Required JSON schema:
+
+{{
+  "contact": {{
+    "full_name": "",
+    "emails": [],
+    "phones": [],
+    "address": {{
+      "street": "",
+      "city": "",
+      "state": "",
+      "country": "",
+      "postcode": ""
+    }},
+    "links": []
+  }},
+  "summary": "",
+  "work_experience": [
+    {{
+      "job_title": "",
+      "employer": "",
+      "start_date": "",
+      "end_date": "",
+      "location": {{
+        "city": "",
+        "country": ""
+      }},
+      "responsibilities": [],
+      "achievements": []
+    }}
+  ],
+  "education": [
+    {{
+      "degree": "",
+      "institution": "",
+      "start_date": "",
+      "end_date": "",
+      "location": {{
+        "city": "",
+        "country": ""
+      }},
+      "honors_gpa": ""
+    }}
+  ],
+  "skills": [],
+  "certifications": [
+    {{
+      "name": "",
+      "issuer": "",
+      "date_earned": "",
+      "expiry_date": ""
+    }}
+  ],
+  "languages": [
+    {{
+      "name": "",
+      "proficiency": ""
+    }}
+  ],
+  "awards": [
+    {{
+      "name": "",
+      "issuer": "",
+      "date": ""
+    }}
+  ],
+  "publications": [
+    {{
+      "title": "",
+      "venue": "",
+      "date": ""
+    }}
+  ],
+  "projects": [
+    {{
+      "title": "",
+      "description": "",
+      "technologies": [],
+      "dates": ""
+    }}
+  ]
+}}
+
+Rules:
+- Escape all newline characters inside strings as \\n.
+- Dates must be in ISO format (YYYY-MM-DD) if available.
+- Keep arrays even if empty.
+- Do not include comments or explanations.
+
+CV text:
+\"\"\"{full_text}\"\"\"
+""" 
                     )
                 }],
                 temperature=0.3,
