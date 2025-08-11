@@ -48,6 +48,9 @@ async def parse_cv(file: UploadFile = File(...)):
             raise HTTPException(status_code=400, detail="Unsupported file type. Upload a .pdf or .docx file.")
 
         # GPT Summary
+        import json
+
+# GPT Summary
         try:
             response = openai.chat.completions.create(
                 model="gpt-4.1-2025-04-14",  # or your chosen model
@@ -61,15 +64,21 @@ async def parse_cv(file: UploadFile = File(...)):
                 temperature=0.3,
             )
             gpt_summary = response.choices[0].message.content.strip()
+
+            # Try to minify the JSON string to remove newlines and extra spaces
+            try:
+                parsed = json.loads(gpt_summary)
+                gpt_summary = json.dumps(parsed, separators=(',', ':'))
+            except Exception:
+                # If parsing fails, keep the original output as is
+                pass
+
         except Exception as e:
             gpt_summary = f"GPT summarization failed: {str(e)}"
 
         return {
             "gpt_summary": gpt_summary
         }
-
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
 
 # Optional manual runner for local testing
 if __name__ == "__main__":
