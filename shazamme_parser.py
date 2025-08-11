@@ -56,35 +56,38 @@ async def parse_cv(file: UploadFile = File(...)):
                     "role": "user",
                     "content": (
                         f"Extract and summarise the following structured information from the provided CV text. Please return the results in **clean, structured, JSON-style format** with the following top-level fields: "
-                        f"1. **contact_info**: - full_name - email_addresses (list) - phone_numbers (list) - address: - street - city - state_or_province - postal_code - country - links (LinkedIn, portfolio, GitHub, etc.) 2. **professional_summary**: (Short about me or objective paragraph) 3. **work_experience**: (List of past jobs, each with the following) - job_title - company - location (city, country) - start_date (ISO format: YYYY-MM-DD or partial if unavailable) - end_date (or present) - responsibilities (bullet points) - achievements (metrics, awards, key results) 4. **education**: (List of degrees/certifications) - degree - institution - location (city, country) - start_date - end_date - honors_or_gpa 5. **skills**: - programming_languages - frameworks - tools - spoken_languages - other_skills 6. **certifications**: - name - issuer - issue_date - expiry_date (if any) 7. **languages**: - name - proficiency_level (e.g. native, fluent, professional) 8. **awards_and_memberships**: - name - issuer - date 9. **publications_and_patents**: - title - venue_or_office - date 10. **projects**: - title - description - technologies_used - dates Use null for any fields not found. Do not hallucinate or assume information. Prioritize accuracy and structured output. \n\n{full_text}"
+                        f"1. **contact_info**: - full_name - email_addresses (list) - phone_numbers (list) - address: - street - city - state_or_province - postal_code - country - links (LinkedIn, portfolio, GitHub, etc.) "
+                        f"2. **professional_summary**: (Short about me or objective paragraph) "
+                        f"3. **work_experience**: (List of past jobs, each with the following) - job_title - company - location (city, country) - start_date (ISO format: YYYY-MM-DD or partial if unavailable) - end_date (or present) - responsibilities (bullet points) - achievements (metrics, awards, key results) "
+                        f"4. **education**: (List of degrees/certifications) - degree - institution - location (city, country) - start_date - end_date - honors_or_gpa "
+                        f"5. **skills**: - programming_languages - frameworks - tools - spoken_languages - other_skills "
+                        f"6. **certifications**: - name - issuer - issue_date - expiry_date (if any) "
+                        f"7. **languages**: - name - proficiency_level (e.g. native, fluent, professional) "
+                        f"8. **awards_and_memberships**: - name - issuer - date "
+                        f"9. **publications_and_patents**: - title - venue_or_office - date "
+                        f"10. **projects**: - title - description - technologies_used - dates "
+                        f"Use null for any fields not found. Do not hallucinate or assume information. Prioritize accuracy and structured output. \n\n{full_text}"
                     )
                 }],
                 temperature=0.3,
             )
             gpt_summary = response.choices[0].message.content.strip()
 
-            # Remove markdown code block if present
+            # Remove markdown json code fences if present
             if gpt_summary.startswith("```json"):
                 gpt_summary = gpt_summary[len("```json"):].strip()
             if gpt_summary.endswith("```"):
                 gpt_summary = gpt_summary[:-3].strip()
 
-            # Parse JSON string into Python dict
             parsed_json = json.loads(gpt_summary)
 
-            # Compact JSON string (no newlines or spaces)
-            gpt_summary_compact = json.dumps(parsed_json, separators=(',', ':'))
-
-            return {
-                parsed_json
-            }
+            # Return parsed JSON directly (no extra string escaping)
+            return parsed_json
 
         except Exception as e:
-            # GPT summarization or JSON parsing failed
             raise HTTPException(status_code=500, detail=f"GPT summarization failed: {str(e)}")
 
     except Exception as e:
-        # Catch all other errors (file read, extraction, etc.)
         raise HTTPException(status_code=500, detail=str(e))
 
 
