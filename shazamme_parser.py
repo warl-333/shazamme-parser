@@ -76,7 +76,7 @@ async def parse_cv(file: UploadFile = File(...)):
             gpt_summary_compact = json.dumps(parsed_json, separators=(',', ':'))
 
             return {
-                "gpt_summary": gpt_summary_compact
+                parsed_json
             }
 
         except Exception as e:
