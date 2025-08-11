@@ -47,7 +47,7 @@ async def parse_cv(file: UploadFile = File(...)):
         else:
             raise HTTPException(status_code=400, detail="Unsupported file type. Upload a .pdf or .docx file.")
 
-        # GPT Summary
+    # GPT Summary
         import json
 
 # GPT Summary
@@ -79,7 +79,9 @@ async def parse_cv(file: UploadFile = File(...)):
         return {
             "gpt_summary": gpt_summary
         }
-
+    except Exception as e:
+        # This outer except can catch any other errors
+        raise HTTPException(status_code=500, detail=str(e))
 # Optional manual runner for local testing
 if __name__ == "__main__":
     import uvicorn
