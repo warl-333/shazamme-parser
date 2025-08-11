@@ -56,7 +56,7 @@ async def parse_cv(file: UploadFile = File(...)):
                     "role": "user",
                     "content": (
                         f"Extract and summarise the following structured information from the provided CV text. Please return the results in **clean, structured, JSON-style format** with the following top-level fields: "
-                        f"1. **contact_info**: - full_name - email_addresses (list) - phone_numbers (list) - address: - street - city - state_or_province - postal_code - country - links (LinkedIn, portfolio, GitHub, etc.) "
+                        f"1. **contact_info**: - full_name - first_name - last_name - email_addresses (list) - phone_numbers (list) - address: - street - city - state_or_province - postal_code - country - links (LinkedIn, portfolio, GitHub, etc.) "
                         f"2. **professional_summary**: (Short about me or objective paragraph) "
                         f"3. **work_experience**: (List of past jobs, each with the following) - job_title - company - location (city, country) - start_date (ISO format: YYYY-MM-DD or partial if unavailable) - end_date (or present) - responsibilities (bullet points) - achievements (metrics, awards, key results) "
                         f"4. **education**: (List of degrees/certifications) - degree - institution - location (city, country) - start_date - end_date - honors_or_gpa "
